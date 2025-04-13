@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote Converter</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .background {
+      margin: 0;
+      padding: 10px;
+      width: calc(100vw - 20px);
+      height: calc(100vh - 20px);
+      min-height: 400px;
+    }
+    .title {
+      margin: 10px 0;
+    }
+
+    textarea {
+      width: calc((100vw / 2) - 35px);
+      height: 200px;
+      padding: 10px;
+      resize: none;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    @media screen and (max-width: 600px) {
+      textarea {
+        width: calc(100vw - 40px);
+      }
+    }
+  </style>
+  <body>
+    <div class="background">
+      <h3 class="title">Converter caracters</h3>
+      <div>
+        <textarea
+          name="beforeText"
+          id="beforeText"
+          onchange="onChange()"
+        ></textarea>
+        <textarea name="afterText" id="afterText" disabled></textarea>
+      </div>
+    </div>
+  </body>
+  <script>
+    function onChange() {
+      const beforeText = document.getElementById("beforeText").value;
+      if (beforeText) {
+          const newText = beforeText.replace(/"/g, "'");
+          document.getElementById("afterText").value = newText;
+      }
+    }
+  </script>
+</html>
